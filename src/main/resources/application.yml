@@ -1,0 +1,24 @@
+
+spring:
+  application:
+    name: weather-zuul
+server:
+  port: 8085
+eureka:
+  client:
+    service-url:
+      default-zone: http://127.0.0.1:8761/eureka/
+zuul:
+  routes:
+    city:
+      path: /weather/**
+      service-id: weather2
+    weather-citylist:
+      path: /weatherCityList/**
+      service-id: weather-citylist
+    weather-data:
+      path: /weatherData/**
+      service-id: weather-data
+    weather-report:
+      path: /weatherReport/**
+      service-id: weather-report
